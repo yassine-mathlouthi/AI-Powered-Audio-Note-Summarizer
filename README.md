@@ -21,7 +21,7 @@ This project allows users to upload audio notes (MP3, WAV, M4A), automatically t
 
 2.Create a .env file for the backend:
    ```bash
-   GROQ_API_KEY=your_groq_api_key_here 
+   GROQ_API_KEY=your_groq_api_key_here
 
 3.Run the full stack:
    ```bash
