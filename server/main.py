@@ -85,11 +85,29 @@ def process_audio():
             messages=[
                 {
                     "role": "system",
-                    "content": "You are an assistant that give key Points of an audio transcripts."
+                    "content": "You are an assistant that give Bullet points of key takeaways  of an audio transcripts."
                 },
                 {
                     "role": "user",
-                    "content": f"Please provide key Points of this transcript:\n{transcript}"
+                    "content": f"Please provide Bullet points of key takeaways  of this transcript:\n{transcript}"
+                },
+            ],
+            temperature=0.7,
+            max_tokens=1024,
+            top_p=1,
+            stream=False,
+        ).choices[0].message.content
+
+        actionItems = client.chat.completions.create(
+            model="meta-llama/llama-4-scout-17b-16e-instruct",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are an assistant that extract clear actionable items or next steps. For example: 'Send follow-up email to client', 'Prepare presentation slides'."
+                },
+                {
+                    "role": "user",
+                    "content": f"Please provide actionable items or next steps of this transcript:\n{transcript}"
                 },
             ],
             temperature=0.7,
@@ -101,7 +119,8 @@ def process_audio():
             "transcript": transcript,
             "fullSummary": full_summary,
             "executiveSummary":executiveSummary,
-            "keyPoints":keyPoints
+            "keyPoints":keyPoints,
+            "actionItems":actionItems
         })
 
     except Exception as e:

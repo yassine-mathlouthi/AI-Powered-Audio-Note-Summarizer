@@ -108,16 +108,11 @@ export default function Home() {
                   {result.keyPoints}
                 </ul>
               </TabsContent>
-              {/* 
-              
-               */}
-              {/* <TabsContent value="actionItems">
+              <TabsContent value="actionItems">
                 <ul className="list-disc pl-5">
-                  {result.actionItems.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
+                  {result.actionItems}
                 </ul>
-              </TabsContent> */}
+              </TabsContent>
             </Tabs>
           )}
         </CardContent>
