@@ -98,7 +98,8 @@ Below are screenshots showcasing the application's interface and features:
 
 Upload your audio files here to get started.
 
-![Home Page](https://github.com/user-attachments/assets/ff4f99dd-386d-4f3f-a480-c037d75074c2)### Transcript
+![Home Page](https://github.com/user-attachments/assets/ff4f99dd-386d-4f3f-a480-c037d75074c2)
+### Transcript
 
 View the full transcription of your audio.
 
