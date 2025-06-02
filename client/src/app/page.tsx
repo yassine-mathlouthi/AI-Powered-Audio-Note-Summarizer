@@ -1,9 +1,19 @@
 "use client";
 import { useState, useCallback } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import axios from "axios";
@@ -21,11 +31,14 @@ export default function Home() {
   } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const handleFileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFiles(Array.from(e.target.files));
-    }
-  }, []);
+  const handleFileChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.target.files) {
+        setFiles(Array.from(e.target.files));
+      }
+    },
+    []
+  );
 
   const handleUpload = useCallback(async () => {
     if (files.length === 0) {
@@ -41,19 +54,23 @@ export default function Home() {
     files.forEach((file) => formData.append("files", file));
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/process-audio", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        onUploadProgress: (progressEvent) => {
-          if (progressEvent.total) {
-            setProgress(Math.round((progressEvent.loaded / progressEvent.total) * 100));
-          }
-        },
-      });
-      console.log(response)
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/process-audio",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          onUploadProgress: (progressEvent) => {
+            if (progressEvent.total) {
+              setProgress(
+                Math.round((progressEvent.loaded / progressEvent.total) * 100)
+              );
+            }
+          },
+        }
+      );
       setResult(response.data);
-      
     } catch (error: any) {
       console.error("Upload error:", error);
       setError("An error occurred while processing the audio.");
@@ -63,53 +80,83 @@ export default function Home() {
   }, [files]);
 
   return (
-    <div className="container mx-auto p-4">
-      <Card>
-        <CardHeader>
-          <CardTitle>AI-Powered Audio Note Summarizer</CardTitle>
+    <div className="min-h-screen bg-gradient-to-br from-sky-50 to-white flex items-center justify-center p-6">
+      <Card className="w-full max-w-4xl shadow-2xl rounded-2xl border-none">
+      
+        <CardHeader className="text-center">
+        <img
+    src="/img/logo.png"
+    alt="App Logo"
+    className="mx-auto h-16 w-16 object-contain"
+    />
+          <CardTitle className="text-3xl font-bold text-blue-800">
+            AI-Powered Audio Note Summarizer
+          </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="space-y-4">
+        <div className="space-y-2">
+          <label
+            htmlFor="audio-upload"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Upload audio files (.mp3, .wav, .m4a)
+          </label>
           <Input
+            id="audio-upload"
             type="file"
             accept=".mp3,.wav,.m4a"
             multiple
             onChange={handleFileChange}
-            className="mb-4"
+            className="file:py-1 file:px-4 file:rounded-md file:border-0 file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200 transition-all"
           />
-          <Button onClick={handleUpload} disabled={uploading}>
+        </div>
+
+          <Button
+            onClick={handleUpload}
+            disabled={uploading}
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md"
+          >
             {uploading ? "Uploading..." : "Upload and Process"}
           </Button>
-          {uploading && <Progress value={progress} className="mt-4" />}
+          {uploading && <Progress value={progress} className="h-3" />}
+
           {error && (
-            <Alert variant="destructive" className="mt-4">
+            <Alert variant="destructive">
               <AlertDescription>{error}</AlertDescription>
             </Alert>
           )}
+
           {result && (
-            <Tabs defaultValue="transcript" className="mt-4">
-              <TabsList>
+            <Tabs defaultValue="transcript" className="pt-4 flex items-center justify-center">
+              <TabsList className="grid grid-cols-2 sm:grid-cols-5 gap-2 bg-blue-100  rounded-xl">
                 <TabsTrigger value="transcript">Transcript</TabsTrigger>
                 <TabsTrigger value="fullSummary">Full Summary</TabsTrigger>
                 <TabsTrigger value="executiveSummary">Executive Summary</TabsTrigger>
                 <TabsTrigger value="keyPoints">Key Points</TabsTrigger>
                 <TabsTrigger value="actionItems">Action Items</TabsTrigger>
               </TabsList>
-              <TabsContent value="transcript">
-                <p>{result.transcript}</p>
+              <TabsContent value="transcript" className="pt-4">
+                <p className="whitespace-pre-line leading-relaxed text-gray-800">
+                  {result.transcript}
+                </p>
               </TabsContent>
-              <TabsContent value="fullSummary">
-                <p>{result.fullSummary}</p>
+              <TabsContent value="fullSummary" className="pt-4">
+                <p className="whitespace-pre-line leading-relaxed text-gray-800">
+                  {result.fullSummary}
+                </p>
               </TabsContent>
-              <TabsContent value="executiveSummary">
-                <p>{result.executiveSummary}</p>
+              <TabsContent value="executiveSummary" className="pt-4">
+                <p className="whitespace-pre-line leading-relaxed text-gray-800">
+                  {result.executiveSummary}
+                </p>
               </TabsContent>
-              <TabsContent value="keyPoints">
-                <ul className="list-disc pl-5">
+              <TabsContent value="keyPoints" className="pt">
+                <ul className="whitespace-pre-line leading-relaxed text-gray-800">
                   {result.keyPoints}
                 </ul>
               </TabsContent>
-              <TabsContent value="actionItems">
-                <ul className="list-disc pl-5">
+              <TabsContent value="actionItems" className="pt-4">
+                <ul className="whitespace-pre-line leading-relaxed text-gray-800">
                   {result.actionItems}
                 </ul>
               </TabsContent>
