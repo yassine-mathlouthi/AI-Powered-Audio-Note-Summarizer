@@ -102,19 +102,23 @@ Upload your audio files here to get started.
 
 View the full transcription of your audio.
 
-![Transcript](https://github.com/user-attachments/assets/4c020437-e9a3-40e8-b5c7-35170b5eb659)### Full Summary
+![Transcript](https://github.com/user-attachments/assets/4c020437-e9a3-40e8-b5c7-35170b5eb659)
+### Full Summary
 
 Get a detailed summary of the audio content.
 
-![Full Summary](https://github.com/user-attachments/assets/0827d969-ff0f-4cfa-90fc-af0c7e406e3a)### Executive Summary
+![Full Summary](https://github.com/user-attachments/assets/0827d969-ff0f-4cfa-90fc-af0c7e406e3a)
+### Executive Summary
 
 A concise summary for quick insights.
 
-![Executive Summary](https://github.com/user-attachments/assets/c0744318-02d9-4904-b515-9807bab5f62b)### Key Points
+![Executive Summary](https://github.com/user-attachments/assets/c0744318-02d9-4904-b515-9807bab5f62b)
+### Key Points
 
 Highlight the main takeaways from the audio.
 
-![Key Points](https://github.com/user-attachments/assets/a5992d9f-2c00-4943-ade8-636cc6cfdfaf)### Action Items
+![Key Points](https://github.com/user-attachments/assets/a5992d9f-2c00-4943-ade8-636cc6cfdfaf)
+### Action Items
 
 Identify actionable steps derived from the audio.
 
