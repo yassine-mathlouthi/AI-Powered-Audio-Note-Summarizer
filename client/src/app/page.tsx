@@ -17,7 +17,7 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import axios from "axios";
-
+import './styles/style.css'
 export default function Home() {
   const [files, setFiles] = useState<File[]>([]);
   const [uploading, setUploading] = useState(false);
@@ -89,7 +89,7 @@ export default function Home() {
     alt="App Logo"
     className="mx-auto h-16 w-16 object-contain"
     />
-          <CardTitle className="text-3xl font-bold text-blue-800">
+          <CardTitle className="text-3xl first-title font-bold text-blue-800">
             AI-Powered Audio Note Summarizer
           </CardTitle>
         </CardHeader>
@@ -114,7 +114,7 @@ export default function Home() {
           <Button
             onClick={handleUpload}
             disabled={uploading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md"
+            className="btn-submit w-full   py-2 px-4 rounded-lg shadow-md"
           >
             {uploading ? "Uploading..." : "Upload and Process"}
           </Button>
@@ -150,15 +150,15 @@ export default function Home() {
                   {result.executiveSummary}
                 </p>
               </TabsContent>
-              <TabsContent value="keyPoints" className="pt">
-                <ul className="whitespace-pre-line leading-relaxed text-gray-800">
+              <TabsContent value="keyPoints" className="pt-4">
+                <p className="whitespace-pre-line leading-relaxed text-gray-800">
                   {result.keyPoints}
-                </ul>
+                </p>
               </TabsContent>
               <TabsContent value="actionItems" className="pt-4">
-                <ul className="whitespace-pre-line leading-relaxed text-gray-800">
+                <p className="whitespace-pre-line leading-relaxed text-gray-800">
                   {result.actionItems}
-                </ul>
+                </p>
               </TabsContent>
             </Tabs>
           )}
