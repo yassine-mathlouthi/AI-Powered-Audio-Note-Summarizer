@@ -53,7 +53,7 @@ This project is a full-stack application with a frontend and backend, orchestrat
 
 ### Frontend
 
-- **Framework**: Built with **Next.js 14** (using the App Router).
+- **Framework**: Built with **Next.js 14**.
 - **Styling**: Utilizes **Tailwind CSS** and the **Shadcn/ui** component library for a modern, responsive design.
 - **Functionality**:
   - File upload interface for audio files.
@@ -70,7 +70,6 @@ This project is a full-stack application with a frontend and backend, orchestrat
 - **Framework**: Built with **Flask** (Python).
 - **API**: Exposes a REST endpoint `/api/process-audio` for processing audio files.
 - **Processing**:
-  - Accepts multipart audio file uploads.
   - Uses the **Groq API** to perform Whisper transcription and LLM-based summarization.
   - Returns structured JSON with the transcript and summaries.
 
