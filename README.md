@@ -17,15 +17,15 @@ This project allows users to upload audio notes (MP3, WAV, M4A), automatically t
 1. Clone the repository:
    ```bash
    git clone https://github.com/yassine-mathlouthi/AI-Powered-Audio-Note-Summarizer.git
-   cd AI-Powered-Audio-Note-Summarizer ```
+   cd AI-Powered-Audio-Note-Summarizer 
 
 2.Create a .env file for the backend:
     ```bash
-   GROQ_API_KEY=your_groq_api_key_here ```
+   GROQ_API_KEY=your_groq_api_key_here 
 
 3.Run the full stack:
   ```bash
-    docker-compose up --build ```
+    docker-compose up --build 
 
 ## 🧩 Architecture Overview
 
