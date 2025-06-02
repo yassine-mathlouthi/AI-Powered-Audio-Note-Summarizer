@@ -71,10 +71,18 @@ export default function Home() {
         }
       );
       setResult(response.data);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Upload error:", error);
-      setError("An error occurred while processing the audio.");
-    } finally {
+    
+      if (axios.isAxiosError(error)) {
+        setError(error.response?.data?.message || "An error occurred while processing the audio.");
+      } else if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("An unexpected error occurred.");
+      }
+    }
+     finally {
       setUploading(false);
     }
   }, [files]);
