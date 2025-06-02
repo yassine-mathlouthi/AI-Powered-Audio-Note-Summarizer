@@ -123,6 +123,8 @@ Highlight the main takeaways from the audio.
 
 Identify actionable steps derived from the audio.
 
-![Action Items](https://github.com/user-attachments/assets/e573989f-54d5-4545-a9fe-50ce372aabfe)---
+![Action Items](https://github.com/user-attachments/assets/e573989f-54d5-4545-a9fe-50ce372aabfe)
+
+---
 
 
