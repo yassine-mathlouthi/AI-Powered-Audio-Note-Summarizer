@@ -100,17 +100,17 @@ export default function Home() {
               <TabsContent value="fullSummary">
                 <p>{result.fullSummary}</p>
               </TabsContent>
-              {/* 
               <TabsContent value="executiveSummary">
                 <p>{result.executiveSummary}</p>
               </TabsContent>
               <TabsContent value="keyPoints">
                 <ul className="list-disc pl-5">
-                  {result.keyPoints.map((point, index) => (
-                    <li key={index}>{point}</li>
-                  ))}
+                  {result.keyPoints}
                 </ul>
-              </TabsContent> */}
+              </TabsContent>
+              {/* 
+              
+               */}
               {/* <TabsContent value="actionItems">
                 <ul className="list-disc pl-5">
                   {result.actionItems.map((item, index) => (

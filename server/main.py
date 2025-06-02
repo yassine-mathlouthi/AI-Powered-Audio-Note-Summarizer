@@ -62,9 +62,46 @@ def process_audio():
             stream=False,
         ).choices[0].message.content
 
+        executiveSummary = client.chat.completions.create(
+            model="meta-llama/llama-4-scout-17b-16e-instruct",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are an assistant that give A short executive summary audio transcripts."
+                },
+                {
+                    "role": "user",
+                    "content": f"Please provide a A short executive summary of this transcript:\n{transcript}"
+                },
+            ],
+            temperature=0.7,
+            max_tokens=1024,
+            top_p=1,
+            stream=False,
+        ).choices[0].message.content
+
+        keyPoints = client.chat.completions.create(
+            model="meta-llama/llama-4-scout-17b-16e-instruct",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are an assistant that give key Points of an audio transcripts."
+                },
+                {
+                    "role": "user",
+                    "content": f"Please provide key Points of this transcript:\n{transcript}"
+                },
+            ],
+            temperature=0.7,
+            max_tokens=1024,
+            top_p=1,
+            stream=False,
+        ).choices[0].message.content
         return jsonify({
             "transcript": transcript,
-            "fullSummary": full_summary
+            "fullSummary": full_summary,
+            "executiveSummary":executiveSummary,
+            "keyPoints":keyPoints
         })
 
     except Exception as e:
